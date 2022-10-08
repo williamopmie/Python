@@ -4,7 +4,7 @@ import random
 from statistics import mean
 
 #Define global variables
-totalQuestionsAsked = []
+totalQuestionsAsked = 0
 totalRandNums = []
 totalPos = []
 
@@ -12,12 +12,14 @@ simulations = 100000
 
 #Run a single simulation
 def SingleSim():
+    #Define global variables
+    global totalQuestionsAsked
+    
     #Define local variables
     pos = 5
 
     randNumList = []
     posList = [5]
-    questionsAsked = 0
 
     #Set the positions chance rates
     posChances = {5:8, 4:6, 3:4, 2:2}
@@ -34,16 +36,15 @@ def SingleSim():
         #Update local variables
         randNumList.append(randNum)
         posList.append(pos)
-        questionsAsked += 1
+        totalQuestionsAsked += 1
 
     #Update endresults
-    totalQuestionsAsked.append(questionsAsked)
     totalRandNums.append(mean(randNumList))
     totalPos.append(mean(posList))
 
 #Print all endresults
 def PrintEverything():
-    print("Average Questions Asked:", mean(totalQuestionsAsked))
+    print("Average Questions Asked:", totalQuestionsAsked / simulations)
     print("Average Random Numbers Generated:", mean(totalRandNums))
     print("Average Positions:", mean(totalPos))
     print("Executed:", simulations, "times")
