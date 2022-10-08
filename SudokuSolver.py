@@ -1,3 +1,7 @@
+"""
+A sudokusolver in python using recursive backtracking
+"""
+
 sudokuBoard = [
     [4,0,0,  3,0,7,  6,0,0],
     [0,0,3,  0,0,2,  8,0,0],
